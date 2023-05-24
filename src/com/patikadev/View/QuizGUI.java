@@ -54,6 +54,7 @@ public class QuizGUI extends JFrame {
         tbl_quiz_list.getTableHeader().setReorderingAllowed(false);
         tbl_quiz_list.getColumnModel().getColumn(0).setMaxWidth(50);
 
+        txt_title.setText("İlgili İçerik Başlığı : " + content.getTitle());
         tbl_quiz_list.getSelectionModel().addListSelectionListener(e -> {
             try {
                 if (!e.getValueIsAdjusting()) {
