@@ -39,7 +39,7 @@ public class ContentGUI extends JFrame {
         this.course = course;
         add(wrapper);
         setTitle(Config.CONTENT_TITLE);
-        setSize(1000, 600);
+        setSize(850, 550);
         setLocation(Helper.centerTheScreen("x", getSize()), Helper.centerTheScreen("y", getSize()));
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);

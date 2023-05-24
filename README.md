@@ -1,10 +1,10 @@
 ### Eğitmen Paneli
 
-Eğitmenler sisteme giriş yaptıklarında, görevlerini yapabilecekleri bir ekran tasarlanmalı.
+DONE - Eğitmenler sisteme giriş yaptıklarında, görevlerini yapabilecekleri bir ekran tasarlanmalı.
 
-* Eğitmenler Operatörler tarafından kendilerine atanan eğitimleri görüp listeleyebilirler. Eğitimleri düzenleme veya silme yetkileri bulunmaz. Başka eğitmenlere ait eğitimleride göremezler.
-* Eğitmenlerin görevi eğitimlere içerik eklemek olacaktır. (Bknz : patika.dev sistesinde ki Java 102 Eğitimi)
-* Eğitmenler içerik ekleyip kendilerine ait olan içerikleri düzenleyip, silebilirler ve listeleyebilirler.
+* DONE - Eğitmenler Operatörler tarafından kendilerine atanan eğitimleri görüp listeleyebilirler. Eğitimleri düzenleme veya silme yetkileri bulunmaz. Başka eğitmenlere ait eğitimleride göremezler.
+* DONE - Eğitmenlerin görevi eğitimlere içerik eklemek olacaktır. (Bknz : patika.dev sistesinde ki Java 102 Eğitimi)
+* DONE - Eğitmenler içerik ekleyip kendilerine ait olan içerikleri düzenleyip, silebilirler ve listeleyebilirler.
 
 İçeriklerin özellikleri :
 
@@ -14,10 +14,9 @@ Eğitmenler sisteme giriş yaptıklarında, görevlerini yapabilecekleri bir ekr
 İçerik Quiz Soruları
 İçeriğin ait olduğu ders bilgisi
 
-
-* Quiz soruları eğitmen panelinden eklenecektir ve soruyu eklerken hangi içeriğe ait olduğu seçilmelidir.
-* İçerik listeleme ekranında, derslere göre ve içerik başlığına göre filtreleme yapılabilmeli.
-* Eğitmen tüm bu işleri arayüz üzerinden yapmalıdır.
+* DONE - Quiz soruları eğitmen panelinden eklenecektir ve soruyu eklerken hangi içeriğe ait olduğu seçilmelidir.
+* DONE - İçerik listeleme ekranında, derslere göre ve içerik başlığına göre filtreleme yapılabilmeli.
+* DONE - Eğitmen tüm bu işleri arayüz üzerinden yapmalıdır.
 
 ### Öğrenci Paneli 
 
@@ -36,6 +35,6 @@ Eğitmenler sisteme giriş yaptıklarında, görevlerini yapabilecekleri bir ekr
 
 ### Giriş Ekranına Ekleme
 
-* Öğrenciler giriş ekranı sırasında üyelikleri yok ise sisteme kayıt olabilirler. - DONE
-* Kayıt ol ekranı tasarlanmalı ve sadece öğrenciler sisteme kayıt yapabilmeli. - DONE
-* Sistemdeki operatörleri yazılımcı (Yani sizler) eklemeli, eğitmenleride sadece operatörler ekleyebilmeli. - DONE
+* DONE - Öğrenciler giriş ekranı sırasında üyelikleri yok ise sisteme kayıt olabilirler.
+* DONE - Kayıt ol ekranı tasarlanmalı ve sadece öğrenciler sisteme kayıt yapabilmeli.
+* DONE - Sistemdeki operatörleri yazılımcı (Yani sizler) eklemeli, eğitmenleride sadece operatörler ekleyebilmeli. 

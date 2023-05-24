@@ -33,6 +33,9 @@ public class Helper {
         return jTextField.getText().trim().isEmpty();
     }
 
+    public static boolean isFieldEmpty(JTextArea jTextArea) {
+        return jTextArea.getText().trim().isEmpty();
+    }
     public static boolean isFieldEmpty(JPasswordField jPasswordField) {
         return jPasswordField.getText().isEmpty();
     }

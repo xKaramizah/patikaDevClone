@@ -6,6 +6,7 @@ import com.patikadev.Model.Operator;
 import com.patikadev.Model.User;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 public class UserSettingsGUI extends JFrame {
     private JPanel wrapper;
@@ -41,19 +42,7 @@ public class UserSettingsGUI extends JFrame {
         setVisible(true);
         setResizable(false);
 
-        fld_set_name.setText(user.getName());
-        fld_set_uname.setText(user.getUname());
-        fld_set_pass.setText(user.getPass());
-        fld_set_pass_again.setText(user.getPass());
-        fld_set_email.setText(user.getEmail());
-        fld_set_email_again.setText(user.getEmail());
-        String selectedCountry = user.getCountry();
-        cmb_set_country.setSelectedItem(selectedCountry);
-        String selectedCity = user.getCity();
-        cmb_set_city.setSelectedItem(selectedCity);
-        int selectedBirth = user.getBirth();
-        cmb_set_birth.setSelectedItem(String.valueOf(selectedBirth));
-        fld_set_phone.setText(user.getPhone());
+        loadUserSettings();
 
         btn_set_send.addActionListener(e -> {
             int count = 0;
@@ -106,12 +95,28 @@ public class UserSettingsGUI extends JFrame {
                 Helper.showMsg("Herhangi bir değişiklik yapılmadı.");
             } else {
                 Helper.showMsg("done");
+                loadUserSettings();
             }
-
         });
         btn_back.addActionListener(e -> {
             dispose();
         });
         btn_set_cancel.addActionListener(e -> dispose());
+    }
+
+    public void loadUserSettings() {
+        fld_set_name.setText(user.getName());
+        fld_set_uname.setText(user.getUname());
+        fld_set_pass.setText(user.getPass());
+        fld_set_pass_again.setText(user.getPass());
+        fld_set_email.setText(user.getEmail());
+        fld_set_email_again.setText(user.getEmail());
+        String selectedCountry = user.getCountry();
+        cmb_set_country.setSelectedItem(selectedCountry);
+        String selectedCity = user.getCity();
+        cmb_set_city.setSelectedItem(selectedCity);
+        int selectedBirth = user.getBirth();
+        cmb_set_birth.setSelectedItem(String.valueOf(selectedBirth));
+        fld_set_phone.setText(user.getPhone());
     }
 }

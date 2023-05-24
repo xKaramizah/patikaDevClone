@@ -148,4 +148,83 @@ public class Quiz {
         }
         return obj;
     }
+
+    public static Quiz getFetch(String query) {
+        Quiz obj = null;
+        try {
+            Statement ps = DBConnector.getInstance().createStatement();
+            ResultSet rs = ps.executeQuery(query);
+            if (rs.next()) {
+                obj = new Quiz(rs.getInt("id"), rs.getString("question"),
+                        rs.getString("optiona"), rs.getString("optionb"),
+                        rs.getString("optionc"), rs.getString("optiond"),
+                        rs.getString("optione"), rs.getString("answer"),
+                        rs.getInt("content_id"));
+            }
+            ps.close();
+            rs.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return obj;
+    }
+
+    public static boolean add(String question, String optionA, String optionB, String optionC, String optionD, String optionE, String answer, int content_id) {
+        String query = "INSERT INTO quiz (question, optionA, optionB, optionC, optionD, optionE, answer, content_id) VALUES (?,?,?,?,?,?,?,?)";
+        boolean result;
+        try {
+            Connection connection = DBConnector.getInstance();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, question);
+            preparedStatement.setString(2, optionA);
+            preparedStatement.setString(3, optionB);
+            preparedStatement.setString(4, optionC);
+            preparedStatement.setString(5, optionD);
+            preparedStatement.setString(6, optionE);
+            preparedStatement.setString(7, answer);
+            preparedStatement.setInt(8, content_id);
+            result = preparedStatement.executeUpdate() != -1;
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return result;
+    }
+
+    public static boolean update(int id, String question, String optionA, String optionB, String optionC, String optionD, String optionE, String answer) {
+        String query = "UPDATE quiz SET question = ?, optiona = ?, optionb = ?, optionc = ?, optiond = ?, optione = ?, answer = ? WHERE id = ?";
+        boolean result;
+        try {
+            Connection connection = DBConnector.getInstance();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, question);
+            preparedStatement.setString(2, optionA);
+            preparedStatement.setString(3, optionB);
+            preparedStatement.setString(4, optionC);
+            preparedStatement.setString(5, optionD);
+            preparedStatement.setString(6, optionE);
+            preparedStatement.setString(7, answer);
+            preparedStatement.setInt(8, id);
+            result = preparedStatement.executeUpdate() != -1;
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return result;
+    }
+
+    public static boolean delete(int id) {
+        boolean result;
+        Connection connection = DBConnector.getInstance();
+        try {
+            Statement statement = connection.createStatement();
+            result = statement.executeUpdate("DELETE FROM quiz WHERE id = " + id) != -1;
+            statement.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return result;
+    }
 }
