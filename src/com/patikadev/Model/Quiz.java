@@ -97,54 +97,55 @@ public class Quiz {
         return content;
     }
 
-//    public static ArrayList<Quiz> getList() {
-//        ArrayList<Quiz> quizList = new ArrayList<>();
-//        String query = "SELECT * FROM quiz";
-//        Quiz obj;
-//        try {
-//            Connection connection = DBConnector.getInstance();
-//            Statement statement = connection.createStatement();
-//            ResultSet resultSet = statement.executeQuery(query);
-//            while (resultSet.next()) {
-//                obj = new Quiz(
-//                        resultSet.getInt("id"),
-//                        resultSet.getString("question"),
-//                        resultSet.getString("optiona"),
-//                        resultSet.getString("optionb"),
-//                        resultSet.getString("optionc"),
-//                        resultSet.getString("optiond"),
-//                        resultSet.getString("optione"),
-//                        resultSet.getString("answer"),
-//                        resultSet.getInt("content_id")
-//                );
-//                quizList.add(obj);
-//            }
-//
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//        return quizList;
-//    }
-//
-//    public static Quiz getFetch(int quiz_id) {
-//        Quiz obj = null;
-//        String query = "SELECT * FROM quiz WHERE id = ?";
-//        try {
-//            PreparedStatement ps = DBConnector.getInstance().prepareStatement(query);
-//            ps.setInt(1, quiz_id);
-//            ResultSet rs = ps.executeQuery();
-//            if (rs.next()) {
-//                obj = new Quiz(rs.getInt("id"), rs.getString("question"),
-//                        rs.getString("optiona"), rs.getString("optionb"),
-//                        rs.getString("optionc"), rs.getString("optiond"),
-//                        rs.getString("optione"), rs.getString("answer"),
-//                        rs.getInt("content_id"));
-//            }
-//            ps.close();
-//            rs.close();
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//        return obj;
-//    }
+    public static ArrayList<Quiz> getList(String query) {
+        ArrayList<Quiz> quizList = new ArrayList<>();
+        Quiz obj;
+        try {
+            Connection connection = DBConnector.getInstance();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                obj = new Quiz(
+                        resultSet.getInt("id"),
+                        resultSet.getString("question"),
+                        resultSet.getString("optiona"),
+                        resultSet.getString("optionb"),
+                        resultSet.getString("optionc"),
+                        resultSet.getString("optiond"),
+                        resultSet.getString("optione"),
+                        resultSet.getString("answer"),
+                        resultSet.getInt("content_id")
+                );
+                quizList.add(obj);
+            }
+            connection.close();
+            statement.close();
+            resultSet.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return quizList;
+    }
+
+    public static Quiz getFetch(int quiz_id) {
+        Quiz obj = null;
+        String query = "SELECT * FROM quiz WHERE id = ?";
+        try {
+            PreparedStatement ps = DBConnector.getInstance().prepareStatement(query);
+            ps.setInt(1, quiz_id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                obj = new Quiz(rs.getInt("id"), rs.getString("question"),
+                        rs.getString("optiona"), rs.getString("optionb"),
+                        rs.getString("optionc"), rs.getString("optiond"),
+                        rs.getString("optione"), rs.getString("answer"),
+                        rs.getInt("content_id"));
+            }
+            ps.close();
+            rs.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return obj;
+    }
 }

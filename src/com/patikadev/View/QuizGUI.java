@@ -35,20 +35,25 @@ public class QuizGUI extends JFrame {
         Object[] quizColNames = {"ID", "Soru", "Ait olduğu başlık"};
         mdl_quiz_list.setColumnIdentifiers(quizColNames);
         row_quiz_list = new Object[quizColNames.length];
-//        loadQuizModel();
+        loadQuizModel();
         tbl_quiz_list.setModel(mdl_quiz_list);
         tbl_quiz_list.getTableHeader().setReorderingAllowed(false);
+
+        btn_back.addActionListener(e -> {
+            dispose();
+        });
     }
 
-//    private void loadQuizModel() {
-//        DefaultTableModel clearModel = (DefaultTableModel) tbl_quiz_list.getModel();
-//        clearModel.setRowCount(0);
-//        int i;
-//        for (Quiz quiz : Quiz.getList()) {
-//            i = 0;
-//            row_quiz_list[i++] = quiz.getId();
-//            row_quiz_list[i++] = quiz.getQuestion();
-//
-//        }
-//    }
+    private void loadQuizModel() {
+        DefaultTableModel clearModel = (DefaultTableModel) tbl_quiz_list.getModel();
+        clearModel.setRowCount(0);
+        int i;
+        for (Quiz quiz : Quiz.getList("SELECT * FROM quiz WHERE content_id = " + content.getId())) {
+            i = 0;
+            row_quiz_list[i++] = quiz.getId();
+            row_quiz_list[i++] = quiz.getQuestion();
+            row_quiz_list[i++] = Content.getFetch(quiz.getContent().getId());
+            mdl_quiz_list.addRow(row_quiz_list);
+        }
+    }
 }

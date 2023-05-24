@@ -7,8 +7,6 @@ import com.patikadev.Model.Educator;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class EducatorGUI extends JFrame {
     private JPanel wrapper;
@@ -87,6 +85,7 @@ public class EducatorGUI extends JFrame {
             if (!Helper.isFieldEmpty(fld_course_id) || !Helper.isFieldEmpty(fld_patika_name) || !Helper.isFieldEmpty(fld_course_name) || !Helper.isFieldEmpty(fld_lang_name)) {
                 int selectedCourseID = Integer.parseInt(tbl_course_list.getValueAt(tbl_course_list.getSelectedRow(), 0).toString());
                 Course selectedCourse = Course.getFetch(selectedCourseID);
+                dispose();
                 ContentGUI contentGUI = new ContentGUI(this.educator, selectedCourse);
             }
         });
