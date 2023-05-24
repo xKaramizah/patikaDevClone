@@ -4,9 +4,11 @@ import com.patikadev.Helper.Config;
 import com.patikadev.Helper.Helper;
 import com.patikadev.Model.Educator;
 import com.patikadev.Model.Operator;
+import com.patikadev.Model.Student;
 import com.patikadev.Model.User;
 
 import javax.swing.*;
+import java.awt.*;
 
 
 public class LoginGUI extends JFrame {
@@ -22,7 +24,7 @@ public class LoginGUI extends JFrame {
     public LoginGUI() {
         add(wrapper);
         setTitle(Config.PROJECT_TITLE);
-        setSize(350, 350);
+        setSize(350, 375);
         setLocation(Helper.centerTheScreen("x", getSize()), Helper.centerTheScreen("y", getSize()));
         setVisible(true);
         setResizable(false);
@@ -45,7 +47,7 @@ public class LoginGUI extends JFrame {
                             EducatorGUI educatorGUI = new EducatorGUI((Educator) user);
                         }
                         case "student" -> {
-                            StudentGUI studentGUI = new StudentGUI();
+                            StudentGUI studentGUI = new StudentGUI((Student) user);
                         }
                     }
                     dispose();
@@ -61,5 +63,11 @@ public class LoginGUI extends JFrame {
     public static void main(String[] args) {
         Helper.setLayout();
         LoginGUI loginGUI = new LoginGUI();
+    }
+
+    private void createUIComponents() {
+        txt_logo = new JLabel();
+        ImageIcon logoIcon = new ImageIcon(new ImageIcon("images/patika.png").getImage().getScaledInstance(250, 90, Image.SCALE_SMOOTH));
+        txt_logo.setIcon(logoIcon);
     }
 }
