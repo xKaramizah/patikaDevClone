@@ -144,10 +144,10 @@ public class User {
         String query = "INSERT INTO user (name, uname, pass, type) VALUES (?,?,?,?)";
         User checkUname = User.getFetch(uName);
         if (checkUname != null) {
-            Helper.showMsg("Kayıtlı bir kullanıcı adı girdiniz. Lütfen farklı bir kullanıcı adı seçiniz.");
+            Helper.showMessageDialog("Kayıtlı bir kullanıcı adı girdiniz. Lütfen farklı bir kullanıcı adı seçiniz.");
             return false;
         } else if (type.equals("operator")) {
-            Helper.showMsg("Operator ekleme yetkiniz bulunmuyor");
+            Helper.showMessageDialog("Operator ekleme yetkiniz bulunmuyor");
             return false;
         }
         boolean result = true;
@@ -160,7 +160,7 @@ public class User {
             ps.setString(4, type);
             result = ps.executeUpdate() != -1;
             if (!result) {
-                Helper.showMsg("error");
+                Helper.showMessageDialog("error");
             }
             ps.close();
         } catch (SQLException e) {
@@ -193,10 +193,10 @@ public class User {
         boolean result;
         User checkUname = getFetch(uname);
         if (checkUname != null && id != checkUname.getId()) {
-            Helper.showMsg("Kayıtlı bir kullanıcı adı girdiniz. Lütfen farklı bir kullanıcı adı seçiniz.");
+            Helper.showMessageDialog("Kayıtlı bir kullanıcı adı girdiniz. Lütfen farklı bir kullanıcı adı seçiniz.");
             return false;
         } else if (!isValidUserType(type)) {
-            Helper.showMsg("Geçerli bir kullanıcı tipi giriniz!");
+            Helper.showMessageDialog("Geçerli bir kullanıcı tipi giriniz!");
             return false;
         } else {
             String query = "UPDATE user SET name = ?, uname = ?, pass = ?, type = ?, email = ?, birth = ?, city = ?, country = ?, phone = ? WHERE id = ?";
@@ -297,7 +297,7 @@ public class User {
                         break;
                     default:
                         obj = new User();
-                        Helper.showMsg("Böyle bir type bulunmuyor. User olarak oluşturuldu.");
+                        Helper.showMessageDialog("Böyle bir type bulunmuyor. User olarak oluşturuldu.");
                         break;
                 }
                 obj.setId(rs.getInt("id"));

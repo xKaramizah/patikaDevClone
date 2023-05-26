@@ -61,7 +61,7 @@ public class Patika {
         String query = "INSERT INTO patika (name) VALUES (?)";
         Patika checkPatika = getFetch(name);
         if (checkPatika != null) {
-            Helper.showMsg("Kayıtlı bir patika adı girdiniz. Lütfen farklı bir seçim yapınız.");
+            Helper.showMessageDialog("Kayıtlı bir patika adı girdiniz. Lütfen farklı bir seçim yapınız.");
             return false;
         }
         boolean result;

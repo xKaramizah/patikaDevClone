@@ -87,37 +87,37 @@ public class ContentGUI extends JFrame {
 
         btn_content_add.addActionListener(e -> {
             if (Helper.isFieldEmpty(fld_title) || fld_area_desc.getText().isEmpty() || fld_area_video.getText().isEmpty()) {
-                Helper.showMsg("fill");
+                Helper.showMessageDialog("fill");
             } else {
                 if (Content.getFetch("SELECT * FROM content WHERE video_link = '" + fld_area_video.getText().trim() + "'") == null) {
                     if (Content.add(fld_title.getText(), fld_area_desc.getText(), fld_area_video.getText(), this.course.getId())) {
-                        Helper.showMsg("done");
+                        Helper.showMessageDialog("done");
                         fld_title.setText(null);
                         fld_area_desc.setText(null);
                         fld_area_video.setText(null);
                     } else {
-                        Helper.showMsg("error");
+                        Helper.showMessageDialog("error");
                     }
                 } else {
-                    Helper.showMsg("Aynı video görseli tekrar kullanamazsınız!");
+                    Helper.showMessageDialog("Aynı video görseli tekrar kullanamazsınız!");
                 }
             }
             loadContentModel();
         });
         btn_content_update.addActionListener(e -> {
             if (Helper.isFieldEmpty(fld_title) || fld_area_desc.getText().isEmpty() || fld_area_video.getText().isEmpty()) {
-                Helper.showMsg("fill");
+                Helper.showMessageDialog("fill");
             } else {
                 if (this.selected_row_id == -1) {
-                    Helper.showMsg("Güncellemek istediğiniz çeriği seçiniz.");
+                    Helper.showMessageDialog("Güncellemek istediğiniz çeriği seçiniz.");
                 } else {
                     if (Content.update(this.selected_row_id, fld_title.getText(), fld_area_desc.getText(), fld_area_video.getText())) {
-                        Helper.showMsg("done");
+                        Helper.showMessageDialog("done");
                         fld_area_video.setText(null);
                         fld_title.setText(null);
                         fld_area_desc.setText(null);
                     } else {
-                        Helper.showMsg("error");
+                        Helper.showMessageDialog("error");
                     }
                 }
             }
@@ -127,19 +127,19 @@ public class ContentGUI extends JFrame {
         btn_content_delete.addActionListener(e -> {
             if (this.selected_row_id != -1) {
                 if (Content.delete(this.selected_row_id)) {
-                    Helper.showMsg("done");
+                    Helper.showMessageDialog("done");
                 } else {
-                    Helper.showMsg("error");
+                    Helper.showMessageDialog("error");
                 }
             } else {
-                Helper.showMsg("Seçim yapınız.");
+                Helper.showMessageDialog("Seçim yapınız.");
             }
             loadContentModel();
             this.selected_row_id = -1;
         });
         btn_quiz_add.addActionListener(e -> {
             if (this.selected_row_id == -1) {
-                Helper.showMsg("Sınav düzenlemek istediğiniz dersi seçiniz.");
+                Helper.showMessageDialog("Sınav düzenlemek istediğiniz dersi seçiniz.");
             } else {
                 QuizGUI quizGUI = new QuizGUI(Content.getFetch(this.selected_row_id));
             }

@@ -24,12 +24,12 @@ public class PatikaUpdateGUI extends JFrame {
 
         btn_patika_update.addActionListener(e -> {
             if (fld_patika_update.getText().trim().isEmpty()) {
-                Helper.showMsg("fill");
+                Helper.showMessageDialog("fill");
             } else {
                 if (Patika.update(patika.getId(), fld_patika_update.getText())) {
-                    Helper.showMsg("done");
+                    Helper.showMessageDialog("done");
                 } else {
-                    Helper.showMsg("error");
+                    Helper.showMessageDialog("error");
                 }
                 dispose();
             }

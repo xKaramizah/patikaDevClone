@@ -40,7 +40,7 @@ public class Helper {
         return jPasswordField.getText().isEmpty();
     }
 
-    public static void showMsg(String text) {
+    public static void showMessageDialog(String text) {
         optionPaneToTR();
         String msg, title;
         switch (text) {
@@ -64,7 +64,7 @@ public class Helper {
         JOptionPane.showMessageDialog(null, msg, title, JOptionPane.INFORMATION_MESSAGE);
     }
 
-    public static boolean confirm(String dialog) {
+    public static boolean showConfirmDialog(String dialog) {
         String msg, title;
         switch (dialog) {
             case "sure":
@@ -90,7 +90,7 @@ public class Helper {
         boolean result;
         try {
             Statement st = DBConnector.getInstance().createStatement();
-            result = st.executeUpdate(query) > 0;
+            result = st.executeUpdate(query) != -1;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

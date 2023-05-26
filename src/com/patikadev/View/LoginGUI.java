@@ -32,11 +32,11 @@ public class LoginGUI extends JFrame {
 
         btn_login.addActionListener(e -> {
             if (Helper.isFieldEmpty(fld_pass) || Helper.isFieldEmpty(fld_uname)) {
-                Helper.showMsg("fill");
+                Helper.showMessageDialog("fill");
             } else {
                 User user = User.getFetch(fld_uname.getText(), fld_pass.getText());
                 if (user == null) {
-                    Helper.showMsg("Kullanıcı bulunamadı.");
+                    Helper.showMessageDialog("Kullanıcı bulunamadı.");
                 } else {
                     String userType = user.getType();
                     switch (userType) {

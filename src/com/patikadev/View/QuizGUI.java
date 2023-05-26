@@ -7,8 +7,6 @@ import com.patikadev.Model.Quiz;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class QuizGUI extends JFrame {
     private JButton btn_back;
@@ -78,16 +76,16 @@ public class QuizGUI extends JFrame {
         });
         btn_update.addActionListener(e -> {
             if (this.selected_row_id == -1) {
-                Helper.showMsg("Güncellenecek satırı seçiniz.");
+                Helper.showMessageDialog("Güncellenecek satırı seçiniz.");
             } else {
-                if (Helper.confirm(this.selected_row_id + " ID no'lu soruyu güncellemek üzeresiniz.")) {
+                if (Helper.showConfirmDialog(this.selected_row_id + " ID no'lu soruyu güncellemek üzeresiniz.")) {
                     if (Helper.isFieldEmpty(fld_question) || Helper.isFieldEmpty(fld_option_a) || Helper.isFieldEmpty(fld_option_b)
                             || Helper.isFieldEmpty(fld_option_c) || Helper.isFieldEmpty(fld_option_d) || Helper.isFieldEmpty(fld_option_e)) {
-                        Helper.showMsg("fill");
+                        Helper.showMessageDialog("fill");
                     } else {
                         if (Quiz.update(this.selected_row_id, fld_question.getText(), fld_option_a.getText(), fld_option_b.getText(),
                                 fld_option_c.getText(), fld_option_d.getText(), fld_option_e.getText(), cmb_answer.getSelectedItem().toString())) {
-                            Helper.showMsg("done");
+                            Helper.showMessageDialog("done");
 
                             this.selected_row_id = -1;
                             fld_question.setText(null);
@@ -98,7 +96,7 @@ public class QuizGUI extends JFrame {
                             fld_option_e.setText(null);
                             loadQuizModel();
                         } else {
-                            Helper.showMsg("error");
+                            Helper.showMessageDialog("error");
                         }
                     }
                 }
@@ -107,11 +105,11 @@ public class QuizGUI extends JFrame {
         btn_add.addActionListener(e -> {
             if (Helper.isFieldEmpty(fld_question) || Helper.isFieldEmpty(fld_option_a) || Helper.isFieldEmpty(fld_option_b)
                     || Helper.isFieldEmpty(fld_option_c) || Helper.isFieldEmpty(fld_option_d) || Helper.isFieldEmpty(fld_option_e)) {
-                Helper.showMsg("fill");
+                Helper.showMessageDialog("fill");
             } else {
                 if (Quiz.add(fld_question.getText(), fld_option_a.getText(), fld_option_b.getText(),
                         fld_option_c.getText(), fld_option_d.getText(), fld_option_e.getText(), cmb_answer.getSelectedItem().toString(), this.content.getId())) {
-                    Helper.showMsg("done");
+                    Helper.showMessageDialog("done");
 
                     this.selected_row_id = -1;
                     fld_question.setText(null);
@@ -121,16 +119,16 @@ public class QuizGUI extends JFrame {
                     fld_option_d.setText(null);
                     fld_option_e.setText(null);
                 } else {
-                    Helper.showMsg("error");
+                    Helper.showMessageDialog("error");
                 }
             }
             loadQuizModel();
         });
         btn_delete.addActionListener(e -> {
             if (this.selected_row_id == -1) {
-                Helper.showMsg("fill");
+                Helper.showMessageDialog("fill");
             } else {
-                if (Helper.confirm("sure")) {
+                if (Helper.showConfirmDialog("sure")) {
                     Quiz.delete(this.selected_row_id);
                     this.selected_row_id = -1;
                     fld_question.setText(null);
@@ -140,9 +138,9 @@ public class QuizGUI extends JFrame {
                     fld_option_d.setText(null);
                     fld_option_e.setText(null);
 
-                    Helper.showMsg("done");
+                    Helper.showMessageDialog("done");
                 } else {
-                    Helper.showMsg("error");
+                    Helper.showMessageDialog("error");
                 }
             }
             loadQuizModel();

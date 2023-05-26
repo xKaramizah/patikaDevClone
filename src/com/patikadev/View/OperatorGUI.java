@@ -120,7 +120,7 @@ public class OperatorGUI extends JFrame {
                 String userPhone = tbl_user_list.getValueAt(tbl_user_list.getSelectedRow(), 9).toString();
 
                 if (User.update(userId, userName, userUname, userPass, userType, userEmail, userBirth, userCity, userCountry, userPhone)) {
-                    Helper.showMsg("done");
+                    Helper.showMessageDialog("done");
                 }
                 loadUserModel();
                 loadCourseModel();
@@ -148,16 +148,16 @@ public class OperatorGUI extends JFrame {
         });
 
         deleteMenu.addActionListener(e -> {
-            if (Helper.confirm("sure")) {
+            if (Helper.showConfirmDialog("sure")) {
                 int selected_row_id = Integer.parseInt(tbl_patika_list.getValueAt(tbl_patika_list.getSelectedRow(), 0).toString());
                 if (Patika.getFetch(selected_row_id) != null) {
                     if (Patika.delete(selected_row_id)) {
-                        Helper.showMsg("done");
+                        Helper.showMessageDialog("done");
                         loadPatikaModel();
                         loadCourseModel();
                     }
                 } else {
-                    Helper.showMsg("error");
+                    Helper.showMessageDialog("error");
                 }
             }
         });
@@ -222,17 +222,17 @@ public class OperatorGUI extends JFrame {
         // ## CourseList
 
         btn_logout.addActionListener(e -> {
-            if (Helper.confirm("sure")) {
+            if (Helper.showConfirmDialog("sure")) {
                 dispose();
                 LoginGUI loginGUI = new LoginGUI();
             }
         });
         btn_user_add.addActionListener(e -> {
             if (Helper.isFieldEmpty(fld_user_name) || Helper.isFieldEmpty(fld_user_uname) || Helper.isFieldEmpty(fld_user_pass)) {
-                Helper.showMsg("fill");
+                Helper.showMessageDialog("fill");
             } else {
                 if (User.add(fld_user_name.getText(), fld_user_uname.getText(), fld_user_pass.getText(), cmb_user_type.getSelectedItem().toString())) {
-                    Helper.showMsg("done");
+                    Helper.showMessageDialog("done");
                     loadUserModel();
                     fld_user_name.setText(null);
                     fld_user_uname.setText(null);
@@ -242,13 +242,13 @@ public class OperatorGUI extends JFrame {
         });
         btn_user_delete.addActionListener(e -> {
             if (Helper.isFieldEmpty(fld_user_id)) {
-                Helper.showMsg("fill");
+                Helper.showMessageDialog("fill");
             } else {
-                if (Helper.confirm("sure")) {
+                if (Helper.showConfirmDialog("sure")) {
                     if (User.delete(Integer.parseInt(fld_user_id.getText()))) {
-                        Helper.showMsg("done");
+                        Helper.showMessageDialog("done");
                     } else {
-                        Helper.showMsg("error");
+                        Helper.showMessageDialog("error");
                     }
                 }
                 loadUserModel();
@@ -266,14 +266,14 @@ public class OperatorGUI extends JFrame {
 
         btn_patika_add.addActionListener(e -> {
             if (fld_patika_name.getText().trim().isEmpty()) {
-                Helper.showMsg("fill");
+                Helper.showMessageDialog("fill");
             } else {
                 String name = fld_patika_name.getText();
                 if (Patika.add(name)) {
-                    Helper.showMsg("done");
+                    Helper.showMessageDialog("done");
                     fld_patika_name.setText(null);
                 } else {
-                    Helper.showMsg("error");
+                    Helper.showMessageDialog("error");
                 }
             }
             loadPatikaModel();
@@ -282,27 +282,27 @@ public class OperatorGUI extends JFrame {
             Item patikaItem = (Item) cmb_course_patika.getSelectedItem();
             Item userItem = (Item) cmb_course_user.getSelectedItem();
             if (Helper.isFieldEmpty(fld_course_name) || Helper.isFieldEmpty(fld_course_lang)) {
-                Helper.showMsg("fill");
+                Helper.showMessageDialog("fill");
             } else {
                 if (Course.add(userItem.getKey(), patikaItem.getKey(), fld_course_name.getText(), fld_course_lang.getText())) {
-                    Helper.showMsg("done");
+                    Helper.showMessageDialog("done");
                     loadCourseModel();
                     fld_course_name.setText(null);
                     fld_course_lang.setText(null);
                 } else {
-                    Helper.showMsg("error");
+                    Helper.showMessageDialog("error");
                 }
             }
         });
         btn_course_delete.addActionListener(e -> {
             if (Helper.isFieldEmpty(fld_course_delete)) {
-                Helper.showMsg("fill");
+                Helper.showMessageDialog("fill");
             } else {
-                if (Helper.confirm("sure")) {
+                if (Helper.showConfirmDialog("sure")) {
                     if (Course.delete(Integer.parseInt(fld_course_delete.getText()))) {
-                        Helper.showMsg("done");
+                        Helper.showMessageDialog("done");
                     } else {
-                        Helper.showMsg("error");
+                        Helper.showMessageDialog("error");
                     }
                 }
             }

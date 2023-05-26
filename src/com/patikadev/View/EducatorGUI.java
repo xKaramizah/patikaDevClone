@@ -73,7 +73,7 @@ public class EducatorGUI extends JFrame {
         });
 
         btn_exit.addActionListener(e -> {
-            if (Helper.confirm("sure")) {
+            if (Helper.showConfirmDialog("sure")) {
                 dispose();
                 LoginGUI loginGUI = new LoginGUI();
             }

@@ -2,11 +2,9 @@ package com.patikadev.View;
 
 import com.patikadev.Helper.Config;
 import com.patikadev.Helper.Helper;
-import com.patikadev.Model.Operator;
 import com.patikadev.Model.User;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 
 public class UserSettingsGUI extends JFrame {
     private JPanel wrapper;
@@ -59,13 +57,13 @@ public class UserSettingsGUI extends JFrame {
                 }
             }
             if (!fld_set_pass.getText().equals(fld_set_pass_again.getText())) {
-                Helper.showMsg("Şifreler uyumsuz.");
+                Helper.showMessageDialog("Şifreler uyumsuz.");
             } else if (!Helper.isFieldEmpty(fld_set_pass) || user.getPass().equals(fld_set_pass.getText())) {
                 Helper.sqlUpdate("UPDATE user SET pass = '" + fld_set_pass.getText() + "' WHERE id = " + user.getId());
                 count++;
             }
             if (!fld_set_email.getText().equals(fld_set_email_again.getText())) {
-                Helper.showMsg("Mailler uyumsuz.");
+                Helper.showMessageDialog("Mailler uyumsuz.");
             } else if (!Helper.isFieldEmpty(fld_set_email) || user.getPass().equals(fld_set_email.getText())) {
                 Helper.sqlUpdate("UPDATE user SET email = '" + fld_set_email.getText() + "' WHERE id = " + user.getId());
                 count++;
@@ -92,9 +90,9 @@ public class UserSettingsGUI extends JFrame {
                 }
             }
             if (count == 0) {
-                Helper.showMsg("Herhangi bir değişiklik yapılmadı.");
+                Helper.showMessageDialog("Herhangi bir değişiklik yapılmadı.");
             } else {
-                Helper.showMsg("done");
+                Helper.showMessageDialog("done");
                 loadUserSettings();
             }
         });

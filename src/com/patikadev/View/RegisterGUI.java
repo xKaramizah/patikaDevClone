@@ -52,10 +52,10 @@ public class RegisterGUI extends JFrame {
 
         btn_reg_send.addActionListener(e -> {
             if (Helper.isFieldEmpty(fld_reg_name) || Helper.isFieldEmpty(fld_reg_uname) || Helper.isFieldEmpty(fld_reg_pass) || fld_reg_pass.getText().equals("******")) {
-                Helper.showMsg("fill");
+                Helper.showMessageDialog("fill");
             } else {
                 if (User.add(fld_reg_name.getText(), fld_reg_uname.getText(), fld_reg_pass.getText(), "student")) {
-                    Helper.showMsg("İşlem başarılı. Giriş ekranına yönlendiriliyorsunuz");
+                    Helper.showMessageDialog("İşlem başarılı. Giriş ekranına yönlendiriliyorsunuz");
                 }
                 dispose();
                 LoginGUI loginGUI = new LoginGUI();
