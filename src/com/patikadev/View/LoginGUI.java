@@ -25,10 +25,11 @@ public class LoginGUI extends JFrame {
         add(wrapper);
         setTitle(Config.PROJECT_TITLE);
         setSize(350, 375);
-        setLocation(Helper.centerTheScreen("x", getSize()), Helper.centerTheScreen("y", getSize()));
+        setLocationRelativeTo(null);
+       // setLocation(Helper.centerTheScreen("x", getSize()), Helper.centerTheScreen("y", getSize()));
         setVisible(true);
         setResizable(false);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         btn_login.addActionListener(e -> {
             if (Helper.isFieldEmpty(fld_pass) || Helper.isFieldEmpty(fld_uname)) {
@@ -41,13 +42,13 @@ public class LoginGUI extends JFrame {
                     String userType = user.getType();
                     switch (userType) {
                         case "operator" -> {
-                            OperatorGUI operatorGUI = new OperatorGUI((Operator) user);
+                            new OperatorGUI((Operator) user);
                         }
                         case "educator" -> {
-                            EducatorGUI educatorGUI = new EducatorGUI((Educator) user);
+                            new EducatorGUI((Educator) user);
                         }
                         case "student" -> {
-                            StudentGUI studentGUI = new StudentGUI((Student) user);
+                            new StudentGUI((Student) user);
                         }
                     }
                     dispose();
@@ -56,13 +57,13 @@ public class LoginGUI extends JFrame {
         });
         btn_reg.addActionListener(e -> {
             dispose();
-            RegisterGUI registerGUI = new RegisterGUI();
+            new RegisterGUI();
         });
     }
 
     public static void main(String[] args) {
         Helper.setLayout();
-        LoginGUI loginGUI = new LoginGUI();
+        new LoginGUI();
     }
 
     private void createUIComponents() {

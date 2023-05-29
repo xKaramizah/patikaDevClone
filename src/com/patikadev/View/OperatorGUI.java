@@ -224,7 +224,7 @@ public class OperatorGUI extends JFrame {
         btn_logout.addActionListener(e -> {
             if (Helper.showConfirmDialog("sure")) {
                 dispose();
-                LoginGUI loginGUI = new LoginGUI();
+                new LoginGUI();
             }
         });
         btn_user_add.addActionListener(e -> {

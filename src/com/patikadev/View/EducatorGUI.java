@@ -75,18 +75,18 @@ public class EducatorGUI extends JFrame {
         btn_exit.addActionListener(e -> {
             if (Helper.showConfirmDialog("sure")) {
                 dispose();
-                LoginGUI loginGUI = new LoginGUI();
+                new LoginGUI();
             }
         });
         btn_settings.addActionListener(e -> {
-            UserSettingsGUI userSettingsGUI = new UserSettingsGUI(this.educator);
+            new UserSettingsGUI(this.educator);
         });
         btn_set_content.addActionListener(e -> {
             if (!Helper.isFieldEmpty(fld_course_id) || !Helper.isFieldEmpty(fld_patika_name) || !Helper.isFieldEmpty(fld_course_name) || !Helper.isFieldEmpty(fld_lang_name)) {
                 int selectedCourseID = Integer.parseInt(tbl_course_list.getValueAt(tbl_course_list.getSelectedRow(), 0).toString());
                 Course selectedCourse = Course.getFetch(selectedCourseID);
                 dispose();
-                ContentGUI contentGUI = new ContentGUI(this.educator, selectedCourse);
+                new ContentGUI(this.educator, selectedCourse);
             }
         });
 

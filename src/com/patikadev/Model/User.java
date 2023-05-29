@@ -3,10 +3,7 @@ package com.patikadev.Model;
 import com.patikadev.Helper.DBConnector;
 import com.patikadev.Helper.Helper;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class User {
@@ -345,5 +342,6 @@ public class User {
         }
         return query;
     }
+
 }
 

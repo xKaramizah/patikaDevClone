@@ -58,16 +58,12 @@ public class RegisterGUI extends JFrame {
                     Helper.showMessageDialog("İşlem başarılı. Giriş ekranına yönlendiriliyorsunuz");
                 }
                 dispose();
-                LoginGUI loginGUI = new LoginGUI();
+                new LoginGUI();
             }
         });
         btn_reg_cancel.addActionListener(e -> {
             dispose();
-            LoginGUI loginGUI = new LoginGUI();
+            new LoginGUI();
         });
-    }
-
-    public static void main(String[] args) {
-        RegisterGUI registerGUI = new RegisterGUI();
     }
 }
