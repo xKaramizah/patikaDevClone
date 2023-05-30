@@ -10,7 +10,6 @@ import com.patikadev.Model.User;
 import javax.swing.*;
 import java.awt.*;
 
-
 public class LoginGUI extends JFrame {
     private JPanel wrapper;
     private JPanel wtop;
@@ -26,7 +25,6 @@ public class LoginGUI extends JFrame {
         setTitle(Config.PROJECT_TITLE);
         setSize(350, 375);
         setLocationRelativeTo(null);
-       // setLocation(Helper.centerTheScreen("x", getSize()), Helper.centerTheScreen("y", getSize()));
         setVisible(true);
         setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);

@@ -82,7 +82,7 @@ public class ContentGUI extends JFrame {
 
         btn_back.addActionListener(e -> {
             dispose();
-            EducatorGUI educatorGUI = new EducatorGUI(this.educator);
+            new EducatorGUI(this.educator);
         });
 
         btn_content_add.addActionListener(e -> {
@@ -141,7 +141,7 @@ public class ContentGUI extends JFrame {
             if (this.selected_row_id == -1) {
                 Helper.showMessageDialog("Sınav düzenlemek istediğiniz dersi seçiniz.");
             } else {
-                QuizGUI quizGUI = new QuizGUI(Content.getFetch(this.selected_row_id));
+                new QuizGUI(Content.getFetch(this.selected_row_id));
             }
         });
     }

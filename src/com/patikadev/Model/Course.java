@@ -159,4 +159,27 @@ public class Course {
         }
         return obj;
     }
+
+    public static Course getFetch(String name) {
+        String query = "SELECT * FROM course WHERE name = ?";
+        Course obj = null;
+        try {
+            PreparedStatement ps = DBConnector.getInstance().prepareStatement(query);
+            ps.setString(1,name);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()){
+                int id = rs.getInt("id");
+                int user_id = rs.getInt("user_id");
+                int patika_id = rs.getInt("patika_id");
+                String course_name = rs.getString("name");
+                String lang = rs.getString("lang");
+                obj = new Course(id, user_id, patika_id, course_name, lang);
+            }
+            ps.close();
+            rs.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return obj;
+    }
 }

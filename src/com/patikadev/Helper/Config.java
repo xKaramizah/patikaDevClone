@@ -6,6 +6,7 @@ public class Config {
     public static final String USER_SETTING_TITLE = "Patika.dev | Kullanıcı Ayarları";
     public static final String CONTENT_TITLE = "Patika.dev | İçerik Düzenleme";
     public static final String QUIZ_TITLE = "Patika.dev | Quiz Düzenleme";
+    public static final String COURSE_TITLE = "Patika.dev | Eğitim Zamanı";
     public static final String DB_URL = "jdbc:mysql://localhost/patika";
     public static final String DB_USER = "root";
     public static final String DB_PASSWORD = "pass";
