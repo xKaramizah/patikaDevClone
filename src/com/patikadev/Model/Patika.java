@@ -146,4 +146,42 @@ public class Patika {
         }
         return obj;
     }
+
+    public static boolean register(Student student, Patika patika) {
+        boolean result;
+        Object obj = null;
+        String query = "SELECT * FROM student_paths WHERE student_id = ? AND patika_id = ?";
+        PreparedStatement ps;
+        try {
+            ps = DBConnector.getInstance().prepareStatement(query);
+            ps.setInt(1, student.getId());
+            ps.setInt(2, patika.getId());
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                obj = 1;
+                rs.close();
+                ps.close();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        if (obj != null) {
+            return false;
+        } else {
+            query = "INSERT INTO student_paths (student_id, patika_id, completed) VALUES (?,?,?)";
+            try {
+                ps = DBConnector.getInstance().prepareStatement(query);
+                ps.setInt(1, student.getId());
+                ps.setInt(2, patika.getId());
+                ps.setInt(3, 0);
+                result = ps.executeUpdate() != -1;
+                ps.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        return result;
+    }
 }

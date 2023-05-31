@@ -1,12 +1,15 @@
 package com.patikadev.View;
 
 import com.patikadev.Helper.Config;
+import com.patikadev.Helper.Helper;
 import com.patikadev.Model.Course;
 import com.patikadev.Model.Patika;
 import com.patikadev.Model.Student;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class PatikaGUI extends JFrame {
     private JButton btn_back;
@@ -54,6 +57,14 @@ public class PatikaGUI extends JFrame {
 
         btn_back.addActionListener(e -> {
             dispose();
+            new StudentGUI(this.student);
+        });
+        btn_register.addActionListener(e -> {
+            if (Patika.register(this.student, this.patika)) {
+                Helper.showMessageDialog("done");
+            } else {
+                Helper.showMessageDialog("Patikaya daha önceden kayıt oldunuz!");
+            }
         });
     }
 

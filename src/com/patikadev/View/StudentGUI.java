@@ -11,6 +11,8 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.PreparedStatement;
@@ -39,8 +41,10 @@ public class StudentGUI extends JFrame {
     private JTable tbl_course_list;
     private JPanel pnl_course_left;
     private JPanel pnl_course_right;
-    private JButton patikayıİnceleButton;
-    private JButton dersiİnceleButton;
+    private JButton btn_examine_path;
+    private JButton btn_examine_course;
+    private JButton btn_check_path;
+    private JButton btn_begin_course;
     DefaultTableModel mdl_stu_patika_list;
     Object[] row_stu_patika_list;
     DefaultTableModel mdl_stu_course_list;
@@ -56,7 +60,7 @@ public class StudentGUI extends JFrame {
         this.student = student;
         add(wrapper);
         setTitle(Config.PROJECT_TITLE);
-        setSize(600, 400);
+        setSize(750, 450);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
@@ -94,6 +98,7 @@ public class StudentGUI extends JFrame {
         };
         tbl_stu_course_list.setModel(mdl_stu_course_list);
         row_stu_course_list = new Object[mdl_stu_course_list.getColumnCount()];
+        tbl_stu_course_list.getTableHeader().setReorderingAllowed(false);
 
         tbl_stu_course_list.getColumnModel().getColumn(progressColumnIndex).setCellRenderer(new ProgressBarCellRenderer());
         tbl_stu_course_list.getColumnModel().getColumn(progressColumnIndex).setCellEditor(new ProgressBarCellEditor());
@@ -139,7 +144,44 @@ public class StudentGUI extends JFrame {
                 if (e.getClickCount() == 2) {
                     String selectedOne = tbl_stu_patika_list.getValueAt(tbl_stu_patika_list.getSelectedRow(), 0).toString();
                     Patika selectedPatika = Patika.getFetch(selectedOne);
+                    dispose();
                     new PatikaGUI(StudentGUI.this.student, selectedPatika);
+                }
+            }
+        });
+
+        tbl_stu_course_list.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    String selectedOne = tbl_stu_course_list.getValueAt(tbl_stu_course_list.getSelectedRow(), 0).toString();
+                    Course selectedCourse = Course.getFetch(selectedOne);
+                    dispose();
+                    new CourseGUI(StudentGUI.this.student, selectedCourse);
+                }
+            }
+        });
+
+        tbl_patika_list.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    String selectedOne = tbl_patika_list.getValueAt(tbl_patika_list.getSelectedRow(), 0).toString();
+                    Patika selectedPatika = Patika.getFetch(selectedOne);
+                    dispose();
+                    new PatikaGUI(StudentGUI.this.student, selectedPatika);
+                }
+            }
+        });
+
+        tbl_course_list.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    String selectedOne = tbl_course_list.getValueAt(tbl_course_list.getSelectedRow(), 0).toString();
+                    Course selectedCourse = Course.getFetch(selectedOne);
+                    dispose();
+                    new CourseGUI(StudentGUI.this.student, selectedCourse);
                 }
             }
         });
@@ -153,6 +195,42 @@ public class StudentGUI extends JFrame {
 
         btn_settings.addActionListener(e -> {
             new UserSettingsGUI(this.student);
+        });
+        btn_examine_path.addActionListener(e -> {
+            try {
+                String selectedOne = tbl_patika_list.getValueAt(tbl_patika_list.getSelectedRow(), 0).toString();
+                Patika selectedPatika = Patika.getFetch(selectedOne);
+                dispose();
+                new PatikaGUI(this.student, selectedPatika);
+            } catch (Exception exception) {
+            }
+        });
+        btn_examine_course.addActionListener(e -> {
+            try {
+                String selectedOne = tbl_course_list.getValueAt(tbl_course_list.getSelectedRow(), 0).toString();
+                Course selectedCourse = Course.getFetch(selectedOne);
+                dispose();
+                new CourseGUI(this.student, selectedCourse);
+            } catch (Exception exception) {
+            }
+        });
+        btn_check_path.addActionListener(e -> {
+            try {
+                String selectedOne = tbl_stu_patika_list.getValueAt(tbl_stu_patika_list.getSelectedRow(), 0).toString();
+                Patika selectedPatika = Patika.getFetch(selectedOne);
+                dispose();
+                new PatikaGUI(this.student, selectedPatika);
+            } catch (Exception exception) {
+            }
+        });
+        btn_begin_course.addActionListener(e -> {
+            try {
+                String selectedOne = tbl_stu_course_list.getValueAt(tbl_stu_course_list.getSelectedRow(), 0).toString();
+                Course selectedCourse = Course.getFetch(selectedOne);
+                dispose();
+                new CourseGUI(this.student, selectedCourse);
+            } catch (Exception exception) {
+            }
         });
     }
 

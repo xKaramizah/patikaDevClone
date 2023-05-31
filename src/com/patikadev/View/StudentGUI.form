@@ -57,7 +57,7 @@
             <properties/>
             <border type="none"/>
             <children>
-              <grid id="d9208" binding="pnl_stu_patika" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="d9208" binding="pnl_stu_patika" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="5" left="0" bottom="0" right="0"/>
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -86,9 +86,17 @@
                       <text value="Katıldığım Patikalar : "/>
                     </properties>
                   </component>
+                  <component id="3a5c" class="javax.swing.JButton" binding="btn_check_path">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Patikayı İncele"/>
+                    </properties>
+                  </component>
                 </children>
               </grid>
-              <grid id="6f5f1" binding="pnl_stu_course" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="6f5f1" binding="pnl_stu_course" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="5" left="0" bottom="0" right="0"/>
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -115,6 +123,14 @@
                     </constraints>
                     <properties>
                       <text value="Katıldığım Dersler :"/>
+                    </properties>
+                  </component>
+                  <component id="a1700" class="javax.swing.JButton" binding="btn_begin_course">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Eğitime Başla"/>
                     </properties>
                   </component>
                 </children>
@@ -150,7 +166,7 @@
                       </component>
                     </children>
                   </scrollpane>
-                  <component id="f3f9d" class="javax.swing.JButton" binding="patikayıİnceleButton" default-binding="true">
+                  <component id="f3f9d" class="javax.swing.JButton" binding="btn_examine_path">
                     <constraints>
                       <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -186,12 +202,12 @@
                       </component>
                     </children>
                   </scrollpane>
-                  <component id="9d173" class="javax.swing.JButton" binding="dersiİnceleButton" default-binding="true">
+                  <component id="9d173" class="javax.swing.JButton" binding="btn_examine_course">
                     <constraints>
                       <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <text value="Dersi İncele"/>
+                      <text value="Eğitime Başla"/>
                     </properties>
                   </component>
                   <vspacer id="d46c4">

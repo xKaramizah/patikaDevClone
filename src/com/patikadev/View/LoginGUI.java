@@ -39,15 +39,9 @@ public class LoginGUI extends JFrame {
                 } else {
                     String userType = user.getType();
                     switch (userType) {
-                        case "operator" -> {
-                            new OperatorGUI((Operator) user);
-                        }
-                        case "educator" -> {
-                            new EducatorGUI((Educator) user);
-                        }
-                        case "student" -> {
-                            new StudentGUI((Student) user);
-                        }
+                        case "operator" -> new OperatorGUI((Operator) user);
+                        case "educator" -> new EducatorGUI((Educator) user);
+                        case "student" -> new StudentGUI((Student) user);
                     }
                     dispose();
                 }
